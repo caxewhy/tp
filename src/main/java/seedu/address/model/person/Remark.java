@@ -9,11 +9,21 @@ import static java.util.Objects.requireNonNull;
 public class Remark {
     public final String value;
 
+    /**
+     * Constructs a {@code Remark}.
+     *
+     * @param remark The remark associated with a person. Cannot be null.
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;
     }
 
+    /**
+     * Returns the string representation of this Remark.
+     *
+     * @return The remark as a string.
+     */
     @Override
     public String toString() {
         return value;
