@@ -7,11 +7,11 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
-        "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
-        "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "yap-zhao-yi": "Yap Zhao Yi",
+        "chan-xiao-yong": "Chan Xiao Yong",
+        "lester-lim-jia-jun": "Lester Lim Jia Jun",
+        "low-jian-cheng": "Low Jian Cheng",
+        "lee-lemuel-john-alejo-censon": "Lee Lemuel John Alejo Censon"
       },
       "headingKeywords": {}
     },
@@ -136,10 +136,43 @@
       "headingKeywords": {}
     },
     {
-      "src": "team/johndoe.md",
-      "title": "John Doe's Project Portfolio Page",
+      "src": "team/jiancheng.md",
+      "title": "Low Jian Cheng's Project Portfolio Page",
       "headings": {
-        "project-addressbook-level-3": "Project: AddressBook Level 3"
+        "project-matchestate": "Project: MatchEstate"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/lester.md",
+      "title": "Lester Lim Jia Jun's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/ryuse.md",
+      "title": "Lee Lemuel John Alejo Censon's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate",
+        "given-below-are-my-contributions-to-the-project": "Given below are my contributions to the project."
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/xiaoyong.md",
+      "title": "Chan Xiao Yong's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/zhaoyi.md",
+      "title": "Yap Zhao Yi's Project Portfolio Page",
+      "headings": {
+        "project-matchestate": "Project: MatchEstate"
       },
       "headingKeywords": {}
     }
