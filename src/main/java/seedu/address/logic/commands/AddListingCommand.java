@@ -10,13 +10,23 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UNIT_NUMBER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_UPPER_BOUND_PRICE;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.listing.HouseNumber;
 import seedu.address.model.listing.Listing;
+import seedu.address.model.listing.PostalCode;
+import seedu.address.model.listing.PropertyName;
+import seedu.address.model.listing.UnitNumber;
+import seedu.address.model.price.PriceRange;
+import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.TagRegistry;
 
 /**
  * Adds a listing to the address book.
@@ -47,6 +57,8 @@ public class AddListingCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New listing added: %1$s";
     public static final String MESSAGE_DUPLICATE_LISTING = "This listing already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_TAGS = "At least one of the new tags given already exist.";
+    public static final String MESSAGE_INVALID_TAGS = "At least one of the tags given does not exist.";
 
     private final Listing toAdd;
     private final Set<String> tagSet;
@@ -66,10 +78,21 @@ public class AddListingCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasListing(toAdd)) {
+        if (!model.hasTags(tagSet)) {
+            throw new CommandException(MESSAGE_INVALID_TAGS);
+        }
+
+        if (model.hasNewTags(newTagSet)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TAGS);
+        }
+
+        model.addTags(newTagSet);
+        Listing listingWithTags = createListingWithTags();
+
+        if (model.hasListing(listingWithTags)) {
             throw new CommandException(MESSAGE_DUPLICATE_LISTING);
         }
-        model.addListing(toAdd);
+        model.addListing(listingWithTags);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
@@ -95,4 +118,35 @@ public class AddListingCommand extends Command {
                 .toString();
     }
 
+    private Listing createListingWithTags() {
+
+        TagRegistry tagRegistry = TagRegistry.of();
+        Set<String> tagNames = new HashSet<>(newTagSet);
+        tagNames.addAll(tagSet);
+        Set<Tag> tags = new HashSet<>();
+
+        for (String tagName: tagNames) {
+            Tag tag = tagRegistry.get(tagName);
+            List<Listing> listings = new ArrayList<>(tag.getListings());
+            listings.add(toAdd);
+            Tag editedTag = new Tag(tagName, tag.getPropertyPreferences(), listings);
+            tagRegistry.setTag(tag, editedTag);
+            tags.add(tag);
+        }
+
+        UnitNumber unitNumber = toAdd.getUnitNumber();
+        HouseNumber houseNumber = toAdd.getHouseNumber();
+        PostalCode postalCode = toAdd.getPostalCode();
+        PriceRange priceRange = toAdd.getPriceRange();
+        PropertyName propertyName = toAdd.getPropertyName();
+        Listing newListing;
+
+        if (unitNumber == null) {
+            newListing = new Listing(postalCode, houseNumber, priceRange, propertyName, tags, toAdd.getOwners());
+        } else {
+            newListing = new Listing(postalCode, unitNumber, priceRange, propertyName, tags, toAdd.getOwners());
+        }
+
+        return newListing;
+    }
 }

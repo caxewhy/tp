@@ -1,10 +1,15 @@
 package seedu.address.ui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.PropertyPreference;
+
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -23,6 +28,8 @@ public class PersonCard extends UiPart<Region> {
 
     public final Person person;
 
+    private PreferenceListPanel preferenceListPanel;
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -34,6 +41,9 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
 
+    @FXML
+    private StackPane preferenceListPanelPlaceholder;
+
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
      */
@@ -44,5 +54,12 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         email.setText(person.getEmail().value);
+
+        ObservableList<PropertyPreference> preferencesList =
+            FXCollections.observableList(person.getPropertyPreferences());
+        if (preferencesList.size() > 0) {
+            preferenceListPanel = new PreferenceListPanel(preferencesList);
+            preferenceListPanelPlaceholder.getChildren().add(preferenceListPanel.getRoot());
+        }
     }
 }
