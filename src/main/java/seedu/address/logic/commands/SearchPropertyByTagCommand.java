@@ -5,7 +5,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -21,7 +23,7 @@ public class SearchPropertyByTagCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all properties with all specified tags.\n"
             + "Parameters: " + PREFIX_TAG + "TAG [" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " t/pet-friendly t/pool";
-
+    private static final Logger logger = LogsCenter.getLogger(SearchPropertyByTagCommand.class);
     private final Set<String> tagsToSearch;
 
     /**
@@ -35,6 +37,8 @@ public class SearchPropertyByTagCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        logger.info("Executing SearchPropertyByTagCommand with tags: " + tagsToSearch);
 
         if (tagsToSearch.isEmpty()) {
             throw new CommandException(Messages.MESSAGE_SEARCH_PROPERTY_TAG_MISSING_PARAMS);
