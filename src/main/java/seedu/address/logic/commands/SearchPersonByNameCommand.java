@@ -16,9 +16,9 @@ import seedu.address.model.person.Person;
  * Represents a command to find and list {@code Person} in the address book whose names match the given keyword(s).
  * Keyword matching is case insensitive and must adhere to a valid name format.
  */
-public class FindPersonCommand extends Command {
+public class SearchPersonByNameCommand extends Command {
 
-    public static final String COMMAND_WORD = "findPerson";
+    public static final String COMMAND_WORD = "searchPersonByName";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all persons whose names match the given keyword(s). "
@@ -34,12 +34,12 @@ public class FindPersonCommand extends Command {
     private final Predicate<Person> predicate;
 
     /**
-     * Constructs a @{code FindPersonCommand} to find {@code Person} with the given keywords.
+     * Constructs a @{code SearchPersonByNameCommand} to find {@code Person} with the given keywords.
      *
      * @param keywords List of keywords to match against names.
      * @throws CommandException if the keywords are empty or invalid.
      */
-    public FindPersonCommand(List<String> keywords) throws CommandException {
+    public SearchPersonByNameCommand(List<String> keywords) throws CommandException {
         requireNonNull(keywords);
         if (keywords.isEmpty()) {
             throw new CommandException(String.format(Messages.MESSAGE_MISSING_KEYWORD, MESSAGE_USAGE));
@@ -87,12 +87,12 @@ public class FindPersonCommand extends Command {
             return true;
         }
 
-        if (!(other instanceof FindPersonCommand)) {
+        if (!(other instanceof SearchPersonByNameCommand)) {
             return false;
         }
 
-        FindPersonCommand otherFindPersonCommand = (FindPersonCommand) other;
-        return keywords.equals(otherFindPersonCommand.keywords);
+        SearchPersonByNameCommand otherSearchPersonByNameCommand = (SearchPersonByNameCommand) other;
+        return keywords.equals(otherSearchPersonByNameCommand.keywords);
     }
 
     /**

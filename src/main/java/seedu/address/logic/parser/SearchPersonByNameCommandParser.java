@@ -6,29 +6,29 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import seedu.address.logic.commands.FindPersonCommand;
+import seedu.address.logic.commands.SearchPersonByNameCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new {@code FindPersonCommandParser} object.
+ * Parses input arguments and creates a new {@code SearchPersonByNameCommandParser} object.
  */
-public class FindPersonCommandParser implements Parser<FindPersonCommand> {
+public class SearchPersonByNameCommandParser implements Parser<SearchPersonByNameCommand> {
 
     /**
-     * Parses the given {@code String} of arguments and returns a FindPersonCommand object.
+     * Parses the given {@code String} of arguments and returns a SearchPersonByNameCommand object.
      *
      * @param args User input arguments.
-     * @return FindPersonCommand instance with extracted keywords.
+     * @return SearchPersonByNameCommand instance with extracted keywords.
      * @throws ParseException if no keywords are provided.
      */
     @Override
-    public FindPersonCommand parse(String args) throws ParseException {
+    public SearchPersonByNameCommand parse(String args) throws ParseException {
         checkCommandFormat(args);
         List<String> keywords = Arrays.stream(args.trim().split("\\s+"))
                 .collect(Collectors.toList());
         try {
-            return new FindPersonCommand(keywords);
+            return new SearchPersonByNameCommand(keywords);
         } catch (CommandException e) {
             throw new ParseException(e.getMessage());
         }
@@ -37,7 +37,7 @@ public class FindPersonCommandParser implements Parser<FindPersonCommand> {
     private static void checkCommandFormat(String args) throws ParseException {
         if (args.trim().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_MISSING_KEYWORD,
-                    FindPersonCommand.MESSAGE_USAGE));
+                    SearchPersonByNameCommand.MESSAGE_USAGE));
         }
     }
 }
