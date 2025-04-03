@@ -66,8 +66,13 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
-        "saving-data": "Saving data"
+        "adding-a-listing": "Adding a listing",
+        "deleting-a-listing": "Deleting a listing",
+        "adding-a-preference": "Adding a preference",
+        "deleting-a-preference": "Deleting a preference",
+        "adding-a-tag": "Adding a tag",
+        "deleting-a-tag": "Deleting a tag",
+        "matching-a-listing": "Matching a listing"
       },
       "headingKeywords": {}
     },
@@ -128,9 +133,9 @@
         "listing-management-2": "Listing Management",
         "tag-management-2": "Tag Management",
         "preference-management-2": "Preference Management",
-        "property-tag-management": "Property Tag Management",
+        "listings-tag-management": "Listings’ Tag Management",
         "matching-system-2": "Matching System",
-        "owner-management": "Owner Management",
+        "listings-owner-management": "Listings’ Owner Management",
         "faq": "FAQ",
         "known-issues": "Known issues"
       },
