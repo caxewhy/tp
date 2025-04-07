@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import seedu.address.model.person.PropertyPreference;
 import seedu.address.model.search.SearchContext;
 
@@ -48,6 +49,8 @@ public class PreferenceCard extends UiPart<Region> {
         this.propertyPreference = propertyPreference;
         id.setText(displayedIndex + ". ");
         priceRange.setText("  --------------  " + propertyPreference.getPriceRange().toString());
+        priceRange.setWrapText(true);
+        priceRange.setTextAlignment(TextAlignment.RIGHT);
 
         if (searchContext.isPriceInRangeForPerson(propertyPreference.getPriceRange())) {
             priceRange.getStyleClass().add("active");

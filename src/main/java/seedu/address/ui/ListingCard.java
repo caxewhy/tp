@@ -82,6 +82,7 @@ public class ListingCard extends UiPart<Region> {
         }
 
         priceRange.setText(listing.getPriceRange().toString());
+        priceRange.setWrapText(true);
         if (searchContext.isPriceInRangeForListing(listing.getPriceRange())) {
             priceRange.getStyleClass().add("active");
         }

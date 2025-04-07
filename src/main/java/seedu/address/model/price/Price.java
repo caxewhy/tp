@@ -12,10 +12,11 @@ import java.math.RoundingMode;
  */
 public class Price {
     public static final String MESSAGE_CONSTRAINTS =
-            "Price must be a non-negative number with up to 2 decimal places and at least 1 digit is present. "
+            "Price must be a non-negative number with up to 16 digits before the decimal point, "
+                    + "and optionally up to 2 decimal places. At least 1 digit must be present. "
                     + "If no value is given, the lower bound price will be unbounded.";
 
-    public static final String VALIDATION_REGEX = "^[0-9]+(?:\\.\\d{1,2})?$";
+    public static final String VALIDATION_REGEX = "^[0-9]{1,16}(?:\\.\\d{1,2})?$";
 
     public final BigDecimal price;
 

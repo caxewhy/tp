@@ -13,7 +13,7 @@ public class HouseNumber {
             "House number must be at most 3 characters long, "
                     + "consisting of only letters and numbers. The last character cannot be 'I' or 'O'.";
 
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9]{1,2}([a-zA-HJ-KL-NP-Z0-9])?$";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9]{1,3}$";
 
     public final String houseNumber;
 
@@ -32,7 +32,8 @@ public class HouseNumber {
      * Returns true if a given string is a valid house number.
      */
     public static boolean isValidHouseNumber(String test) {
-        return test.matches(VALIDATION_REGEX);
+        boolean isLastCharacterValid = !(test.toUpperCase().endsWith("I") || test.toUpperCase().endsWith("O"));
+        return test.matches(VALIDATION_REGEX) && isLastCharacterValid;
     }
 
     @Override

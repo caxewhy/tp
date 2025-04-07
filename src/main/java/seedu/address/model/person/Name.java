@@ -10,10 +10,10 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names must be between 2 and 50 characters long and can only contain letters, apostrophes, spaces,"
+            "Names must be between 2 and 60 characters long and can only contain letters, apostrophes, spaces,"
                     + " periods, and hyphens. The first character must be a letter, and the name cannot be blank.";
 
-    public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z' .-]{1,49}$";
+    public static final String VALIDATION_REGEX = "^[A-Za-z][A-Za-z' .-]{1,59}$";
 
     public final String fullName;
 

@@ -12,7 +12,7 @@ public class PropertyName {
             "Property names must be between 2 and 100 characters long "
                     + "and can only contain letters, numbers, apostrophes, periods, hyphens, and spaces.";
 
-    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9’.\\- ]{2,100}$";
+    public static final String VALIDATION_REGEX = "^[a-zA-Z0-9'.\\- ]{2,100}$";
 
     public final String propertyName;
 
