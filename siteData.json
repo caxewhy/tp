@@ -50,11 +50,18 @@
         "model-component": "Model component",
         "storage-component": "Storage component",
         "common-classes": "Common classes",
-        "implementation": "Implementation",
+        "planned-implementation": "Planned Implementation",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-edit-tag-command": "[Proposed] Edit tag command",
         "proposed-edit-listing-command": "[Proposed] Edit listing command",
+        "proposed-edit-preference-command": "[Proposed] Edit Preference command",
         "proposed-merge-tag-command": "[Proposed] Merge tag command",
+        "enhancements-still-in-consideration": "Enhancements still in consideration:",
+        "consideration-clear-confirmation": "[Consideration] Clear confirmation",
+        "consideration-command-word-length": "[Consideration] Command word length",
+        "consideration-space-separated-search-person-keyword": "[Consideration] Space separated search person keyword",
+        "consideration-applying-multiple-search-match-filters-concurrently": "[Consideration] Applying multiple search/match filters concurrently",
+        "consideration-filtering-tags-in-tags-list": "[Consideration] Filtering tags in tags list",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -139,7 +146,7 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "match-estate": "Match Estate"
+        "matchestate": "MatchEstate"
       },
       "headingKeywords": {}
     },
